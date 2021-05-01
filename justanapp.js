@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 
 app.get('/', (req, res)=>{
 
-    res.send("WELCOME ");
+    res.send("WELCOME to my web ");
     
     
     }   )
@@ -24,6 +24,7 @@ app.get('/', (req, res)=>{
         
         var getname= req.body.name;
         var getroll= req.body.rollno;
+        
 
         res.json( {"Name": getname, "RollNo": getroll} );
     })
