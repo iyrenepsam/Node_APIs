@@ -64,6 +64,6 @@ var getnum2=parseFloat(req.body.num2)
         res.json({"RESULT":result})
     })
 
-app.listen(3000, () => console.log(" listening on port 3000"));
+app.listen(process.env.PORT || 3000, () => console.log(" listening on port 3000"));
 
 
