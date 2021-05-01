@@ -1,7 +1,7 @@
 var express=require('express')    //importing or calling  express
 var bodyParser=require('body-parser')
 
-let app=express()      // node a server as it is a web application
+ let app=express()      // node a server as it is a web application
 
 // parse application/x-www-form-urlencoded
 
