@@ -1,7 +1,10 @@
 var express=require('express')    //importing or calling  express
 var bodyParser=require('body-parser')
 
- let app=express()      // node a server as it is a web application
+  var mongoose=require('mongoose');
+
+  let app=express()      // node a server as it is a web application
+
 
 // parse application/x-www-form-urlencoded
 
@@ -24,10 +27,13 @@ app.get('/', (req, res)=>{
         
         var getname= req.body.name;
         var getroll= req.body.rollno;
-        
+        var getadminno= req.body.adminno;
+        var getcollege=req.body.college;
 
-        res.json( {"Name": getname, "RollNo": getroll} );
-    })
+        res.json( {"Name": getname, "RollNo": getroll, "Admission Number": getadminno, "College": getcollege} );
+    }
+    
+    )
 
     app.post('/add',(req,res)=>{
      var getnum1= parseFloat(req.body.num1);
@@ -40,7 +46,7 @@ app.get('/', (req, res)=>{
 
     app.post('/subtract',(req,res)=>{
         var getnum1=parseFloat(req.body.num1)
-var getnum2=parseFloat(req.body.num2)
+ var getnum2=parseFloat(req.body.num2)
  var diff=getnum1-getnum2;
  res.json({"DIFFERENCE":diff});
 
