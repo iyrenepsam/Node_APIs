@@ -17,7 +17,7 @@ var {studentmodel}=require('./models/studentmodel');
   //imported from studentmodel file  
   // connecting nodejs application to cloud
  
- //mongoose.connect("mongodb+srv://irenepsam:#irene@95@cluster0.96drt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{useNewUrlParser:true}) //myfirstDatabase
+ mongoose.connect("mongodb+srv://irenepsam:#irene@95@cluster0.96drt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{useNewUrlParser:true}) //myfirstDatabase
  
     app.get('/', (req, res)=>{
 
@@ -29,19 +29,19 @@ var {studentmodel}=require('./models/studentmodel');
                  
          var studentObject= new studentmodel( req.body);
 
-       //studentObject.save(
-            //(error)=>{
-                //if(error)
-                //{
-              //      res.send("Error" + error)
-              //  }
-               // else
-               // {
-                  // res.json({"status": "success"})
-              //  }
+       studentObject.save(
+            (error)=>{
+                if(error)
+                {
+                    res.send("Error" + error)
+               }
+                else
+                {
+                   res.json({"status": "success"})
+              }
 
-           // }
-       // )    
+           }
+       )    
          res.json(studentObject);
 
     } )
