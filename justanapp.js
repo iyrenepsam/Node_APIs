@@ -1,15 +1,12 @@
 
 
+
 var express=require('express')                        //importing or calling  express
 let app=express()      
 var mongoose=require('mongoose');  
 
-
 var bodyParser=require('body-parser')
-
-app.use(bodyParser.urlencoded({ extended: false }))    // node a server as it is a web application  
-                                                       // parse application/x-www-form-urlencoded
-
+app.use(bodyParser.urlencoded({ extended: false }))               // node a server as it is a web application   // parse application/x-www-form-urlencoded
 app.use(bodyParser.json())                        // parse application/json
 
 
