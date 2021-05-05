@@ -1,39 +1,53 @@
-var express=require('express')    //importing or calling  express
+
+
+var express=require('express')                        //importing or calling  express
+let app=express()      
+var mongoose=require('mongoose');  
+
+
 var bodyParser=require('body-parser')
 
-  var mongoose=require('mongoose');
+app.use(bodyParser.urlencoded({ extended: false }))    // node a server as it is a web application  
+                                                       // parse application/x-www-form-urlencoded
 
-  let app=express()      // node a server as it is a web application
+app.use(bodyParser.json())                        // parse application/json
 
 
-// parse application/x-www-form-urlencoded
 
-app.use(bodyParser.urlencoded({ extended: false }))
+
+var {studentmodel}=require('./models/studentmodel');
+
+  //imported from studentmodel file  
+  // connecting nodejs application to cloud
  
-// parse application/json
+ //mongoose.connect("mongodb+srv://irenepsam:#irene@95@cluster0.96drt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{useNewUrlParser:true}) //myfirstDatabase
+ 
+    app.get('/', (req, res)=>{
 
-app.use(bodyParser.json())
+    res.send("WELCOME to my web ")
 
+    } )
 
+    app.post('/read',(req,res)=>{                  // creating object in /read...for database
+                 
+         var studentObject= new studentmodel( req.body);
 
-app.get('/', (req, res)=>{
+       //studentObject.save(
+            //(error)=>{
+                //if(error)
+                //{
+              //      res.send("Error" + error)
+              //  }
+               // else
+               // {
+                  // res.json({"status": "success"})
+              //  }
 
-    res.send("WELCOME to my web ");
-    
-    
-    }   )
+           // }
+       // )    
+         res.json(studentObject);
 
-    app.post('/read',(req,res)=>{
-        
-        var getname= req.body.name;
-        var getroll= req.body.rollno;
-        var getadminno= req.body.adminno;
-        var getcollege=req.body.college;
-
-        res.json( {"Name": getname, "RollNo": getroll, "Admission Number": getadminno, "College": getcollege} );
-    }
-    
-    )
+    } )
 
     app.post('/add',(req,res)=>{
      var getnum1= parseFloat(req.body.num1);
@@ -44,13 +58,16 @@ app.get('/', (req, res)=>{
 
     } )
 
+
     app.post('/subtract',(req,res)=>{
         var getnum1=parseFloat(req.body.num1)
- var getnum2=parseFloat(req.body.num2)
- var diff=getnum1-getnum2;
- res.json({"DIFFERENCE":diff});
+        var getnum2=parseFloat(req.body.num2)
+        var diff=getnum1-getnum2;
+       res.json({"DIFFERENCE":diff});
 
     })
+
+
 
     app.post('/multiply',(req,res)=>{
 
